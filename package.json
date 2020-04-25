@@ -1,0 +1,24 @@
+{
+  "name": "screen-capture-node",
+  "version": "1.0.0",
+  "gypfile": true,
+  "author": "Tristan Rasmussen",
+  "entry": "./dist/index.js",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "bindings": "^1.5.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "node-addon-api": "^1.7.1",
+    "typescript": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.7",
+    "node-gyp": "^6.0.0"
+  },
+  "scripts": {
+    "build:javascript": "tsc",
+    "build:native": "node-gyp rebuild",
+    "build": "npm run build:native && npm run build:javascript",
+    "prepare": "npm run build"
+  }
+}
