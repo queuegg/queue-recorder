@@ -1,24 +1,28 @@
 {
-  "name": "screen-capture-node",
+  "name": "queue-recorder",
   "version": "1.0.0",
   "gypfile": true,
   "author": "Tristan Rasmussen",
-  "entry": "./dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "@types/fluent-ffmpeg": "^2.1.14",
+    "@types/node": "^12.12.7",
     "bindings": "^1.5.0",
     "fluent-ffmpeg": "^2.1.2",
     "node-addon-api": "^1.7.1",
+    "node-gyp": "^6.0.0",
     "typescript": "^3.7.2"
   },
   "devDependencies": {
-    "@types/node": "^12.12.7",
-    "node-gyp": "^6.0.0"
+    "ts-node": "^8.9.0"
   },
   "scripts": {
     "build:javascript": "tsc",
-    "build:native": "node-gyp rebuild",
+    "build:native": "node-gyp configure && node-gyp build",
     "build": "npm run build:native && npm run build:javascript",
+    "install": "npm run build",
     "prepare": "npm run build"
   }
 }
