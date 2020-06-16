@@ -181,7 +181,15 @@ void PipelineWrapper::addStage(const Napi::CallbackInfo &info)
 
 void PipelineWrapper::initialize(const Napi::CallbackInfo &info)
 {
-    pipeline->initialize();
+    Napi::Env env = info.Env();
+    try
+    {
+        pipeline->initialize();
+    }
+    catch (std::exception e)
+    {
+        Napi::Error::New(env, "Failed to initialize pipeline: " + std::string(e.what())).ThrowAsJavaScriptException();
+    }
 }
 
 void PipelineWrapper::start(const Napi::CallbackInfo &info)

@@ -12,6 +12,9 @@ const CONFIG: ScreenCaptureConfig = {
       type: "desktop",
     },
   },
+  audio: {
+    sources: [{ type: 'render' }]
+  },
   output: {
     fileName: "output/test.mp4",
   },
